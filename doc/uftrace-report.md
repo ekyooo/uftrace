@@ -58,6 +58,9 @@ REPORT OPTIONS
     `--data` option, index 1 is for data given by the `--diff` option, and index
     2 is for (percentage) differences between the two data.
 
+\--srcline
+:   Show source line of each function that include debug information in object.
+
 
 COMMON OPTIONS
 ==============
@@ -151,6 +154,17 @@ This command shows information like the following:
        27.289 us    1.243 us           1  main
        26.046 us    0.939 us           1  a
        25.107 us    0.934 us           1  b
+
+    $ uftrace report --srcline
+      Total time   Self time       Calls  Function [Source]
+      ==========  ==========  ==========  ====================
+       17.508 us    2.199 us           1  main [./tests/s-abc.c:26]
+       15.309 us    2.384 us           1  a [./tests/s-abc.c:11]
+       12.925 us    2.633 us           1  b [./tests/s-abc.c:16]
+       10.292 us    5.159 us           1  c [./tests/s-abc.c:21]
+        5.133 us    5.133 us           1  getpid
+        3.437 us    3.437 us           1  __monstartup
+        1.959 us    1.959 us           1  __cxa_atexit
 
     $ uftrace report --avg-self
         Avg self    Min self    Max self  Function
